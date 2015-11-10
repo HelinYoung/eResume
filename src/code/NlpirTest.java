@@ -14,7 +14,7 @@ public class NlpirTest {
 		// 定义并初始化接口的静态变量
 		CLibrary Instance = (CLibrary) Native.loadLibrary(
 				"D://files//TDDOWNLOAD//20140928//lib//win64//NLPIR", CLibrary.class);
-
+		
 		// printf函数声明
 		public int NLPIR_Init(byte[] sDataPath, int encoding,
 				byte[] sLicenceCode);
@@ -23,7 +23,8 @@ public class NlpirTest {
 
 		public String NLPIR_GetKeyWords(String sLine, int nMaxKeyLimit,
 				boolean bWeightOut);
-
+		public int NLPIR_AddUserWord(String sWord);
+		public int NLPIR_DelUsrWord(String sWord);
 		public void NLPIR_Exit();
 	}
 
@@ -39,6 +40,7 @@ public class NlpirTest {
 
 	public static void main(String[] args) throws Exception {
 		String argu = "D://files//TDDOWNLOAD//20140928//";
+		String userdiction="D://files//TDDOWNLOAD//userdiction.txt";
 		// String system_charset = "GBK";//GBK----0
 		String system_charset = "GBK";
 		int charset_type = 1;
@@ -54,7 +56,8 @@ public class NlpirTest {
 		}
 
 		String sInput = "据悉，质检总局已将最新有关情况再次通报美方，要求美方加强对输华玉米的产地来源、运输及仓储等环节的管控措施，有效避免输华玉米被未经我国农业部安全评估并批准的转基因品系污染。";
-
+		CLibrary.Instance.NLPIR_AddUserWord("质检总局 n");
+		CLibrary.Instance.NLPIR_AddUserWord("管控措施  n");
 		String nativeBytes = null;
 		try {
 			nativeBytes = CLibrary.Instance.NLPIR_ParagraphProcess(sInput, 3);
