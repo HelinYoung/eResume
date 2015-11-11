@@ -13,7 +13,7 @@ public class NlpirTest {
 	public interface CLibrary extends Library {
 		// 定义并初始化接口的静态变量
 		CLibrary Instance = (CLibrary) Native.loadLibrary(
-				"D://files//TDDOWNLOAD//20140928//lib//win64//NLPIR", CLibrary.class);
+				"..//..//lib/NLPIR", CLibrary.class);
 		
 		// printf函数声明
 		public int NLPIR_Init(byte[] sDataPath, int encoding,
@@ -39,7 +39,7 @@ public class NlpirTest {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String argu = "D://files//TDDOWNLOAD//20140928//";
+		String argu = "";
 		String userdiction="D://files//TDDOWNLOAD//userdiction.txt";
 		// String system_charset = "GBK";//GBK----0
 		String system_charset = "GBK";
@@ -55,8 +55,8 @@ public class NlpirTest {
 			return;
 		}
 
-		String sInput = "据悉，质检总局已将最新有关情况再次通报美方，要求美方加强对输华玉米的产地来源、运输及仓储等环节的管控措施，有效避免输华玉米被未经我国农业部安全评估并批准的转基因品系污染。";
-		CLibrary.Instance.NLPIR_AddUserWord("质检总局 n");
+		String sInput = "使用PXE系统给服务器批量部署OS；2、了解Linux、Windows系统，熟悉命令行和视窗页面的基本操作；";
+		CLibrary.Instance.NLPIR_AddUserWord("  n");
 		CLibrary.Instance.NLPIR_AddUserWord("管控措施  n");
 		String nativeBytes = null;
 		try {
